@@ -46,6 +46,7 @@ SOFTWARE.
       animationDuration: 500, // duration of animation in ms if enabled
       animationEasing: undefined, // easing of animation if enabled
       boundingBox: undefined, // constrain layout bounds; { x1, y1, x2, y2 } or { x1, y1, w, h }
+      nodeDimensionsIncludeLabels: true // consider label dimensions when calculating dimensions of nodes
       ready: function(){}, // on layoutready
       stop: function(){} // on layoutstop
     };
@@ -102,11 +103,13 @@ SOFTWARE.
       var nodes = eles.nodes();
       for( var i = 0; i < nodes.length; i++ ){
         var node = nodes[i];
-        var nbb = node.boundingBox();
+        var nd = node.layoutDimensions({
+          nodeDimensionsIncludeLabels: options.nodeDimensionsIncludeLabels
+        });
 
         g.setNode( node.id(), {
-          width: nbb.w,
-          height: nbb.h,
+          width: nd.w,
+          height: nd.h,
           name: node.id()
         } );
 

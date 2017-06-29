@@ -64,6 +64,7 @@ var defaults = {
   animationDuration: 500, // duration of animation in ms if enabled
   animationEasing: undefined, // easing of animation if enabled
   boundingBox: undefined, // constrain layout bounds; { x1, y1, x2, y2 } or { x1, y1, w, h }
+  nodeDimensionsIncludeLabels: true // consider label dimensions when calculating dimensions of nodes
   ready: function(){}, // on layoutready
   stop: function(){} // on layoutstop
 };
